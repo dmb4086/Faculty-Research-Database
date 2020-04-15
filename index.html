@@ -28,8 +28,11 @@
             <a href="#t5"><li class="icon fa fa-plus-circle" id="cinco"></li></a>
           </ul>
           <div class="page" id="p1">
-             <section class="icon fa fa-bolt"><span class="title">Bolt</span><span class="hint">Like this pen to see the magic!...<br> Just kidding, it won't happen anything but I'll be really happy If you do so.</span></section>
-          </div>
+		  <form name="searchForm" action="searchprocess.php"  
+          onsubmit="return validateForm();" method="POST">
+             <section class="icon fa fa-bolt"><span class="title">Faculty Student Database</span><span class="hint">Search for faculty or student interests to collaborate <p><input type="text" name="searchInterest" /></p> <input type="submit" value=" Search " /></span></section>
+				
+		  </div>
           <div class="page" id="p2">
             <section class="icon fa fa-keyboard-o"><span class="title">Type</span></section>
           </div>

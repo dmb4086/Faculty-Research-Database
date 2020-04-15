@@ -30,8 +30,14 @@ html, body, .page {
     margin-right: 11%;
     margin-top: 5%;
 
+}
+
+.pads{
+
+    padding-bottom: 1em;
 
 }
+
 
 #p1 {
   left: 0;
@@ -261,7 +267,7 @@ a {
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #03e9f4;
+  color: #FFD700;
   font-size: 12px;
 }
 

@@ -4,6 +4,6 @@ This is the main JS script file for index.html
  */
 
 
-function GetInput() {
-
-}
+//function GetInput() {
+//
+//}

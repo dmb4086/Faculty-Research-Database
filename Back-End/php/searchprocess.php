@@ -1,6 +1,6 @@
 <?php
 	$path = './';
-	require $path.'../../../dbConnect.inc';
+	require $path.'../../dbConnect.inc';
 ?>
 <h2>Search Results</h2>
 

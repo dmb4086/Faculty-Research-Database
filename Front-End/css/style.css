@@ -27,8 +27,11 @@ html, body, .page {
 .cntr{
 
     text-align: center;
+/*
     margin-right: 11%;
     margin-top: 5%;
+*/
+    padding: 2em;
 
 }
 
@@ -47,7 +50,7 @@ html, body, .page {
   left: 200%;
 }
 
-#p1 { background: darkslateblue; }
+#p1 { background: #1b2733; }
 #p2 { background: tomato; }
 #p3 { background: gold; }
 #p4 { background: deeppink; }
@@ -89,6 +92,7 @@ ul .icon:hover {
 }
 .icon {
   line-height: 2;
+    font-size: 26em;
 }
 
 #t2:target ul .icon,
@@ -123,7 +127,13 @@ ul {
   width: 10%;
   padding: 0;
   text-align: center;
+
  }
+
+ul{
+    margin-top:  10em;
+}
+
 
 #menu .icon {
   margin: 30px 0;
@@ -143,6 +153,7 @@ a {
 
 .title {
   font-size: 38px;
+    color: white;
 }
 
 .hint {
@@ -374,16 +385,56 @@ a {
     bottom: 100%;
   }
 }
+li{
+    padding: 1em;
+}
 
 
 
 
 
 
+.search-container {
+  width: 600px;
+  display: block;
+  margin: 0 auto;
+}
 
+input#search-bar {
+  margin: 0 auto;
+  width: 100%;
+  height: 45px;
+  padding: 0 20px;
+  font-size: 1rem;
+  border: 1px solid #D0CFCE;
+  outline: none;
+}
+input#search-bar:focus {
+  border: 1px solid #008ABF;
+  transition: 0.35s ease;
+  color: #008ABF;
+}
+input#search-bar:focus::-webkit-input-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus::-moz-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
+input#search-bar:focus:-ms-placeholder {
+  transition: opacity 0.45s ease;
+  opacity: 0;
+}
 
-
-
+.search-icon {
+  position: relative;
+  float: right;
+  width: 75px;
+  height: 75px;
+  top: -62px;
+  right: -45px;
+}
 
 
 

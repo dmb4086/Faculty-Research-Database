@@ -1,7 +1,7 @@
 <?php
 
  $path = './';
-require $path."../../../dbConnect.inc";
+ require $path.'../../../../dbConnect.inc';
 
 if($mysqli){
 
@@ -16,7 +16,7 @@ if($mysqli){
 
 
 
-        echo "name: ".$name." Email: ".$email." keyword: ".$keyword;
+        echo "name: ".$name." Email: ".$email." keyword: ".$keyword. "type: ".$type. "SF". $StudentFlag;
     }
 
 }

@@ -24,7 +24,7 @@ $interest =  test_input($_POST['searchInterest']) ;
 
 
 
-$sql = "SELECT * FROM InterestBase where Keyword='$interest'";
+$sql = "SELECT * FROM InterestBase where Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";
 $res = mysqli_query($mysqli, $sql);
 
 if ($res->num_rows > 0) {

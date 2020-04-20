@@ -45,6 +45,19 @@
                             <div>
                                 <form class="search-container" name="OrderFrom" action="Back-End/php/searchprocess.php" onsubmit="return validateForm();" method="post">
                                     <input type="text" name="searchInterest" id="search-bar" placeholder="What can I help you with today?">
+									<div class="pads">
+                                        <label for="isStudent">Filter by type:</label>
+
+                                        <select id="isstudent" name="filter">
+										
+											<option value="None"> None</option>
+                                            <option value="Research"> Research</option>
+                                            <option value="Paper"> Paper</option>
+											<option value="Project"> Project</option>
+											<option value="Other"> Other</option>
+
+                                        </select>
+                                    </div>
                                     <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
                                 </form>
                             </div>
@@ -68,6 +81,10 @@
                                     <div class="user-box">
                                         <input type="email" name="email" required="">
                                         <label>Email</label>
+                                    </div>
+									<div class="user-box">
+                                        <input type="text" name="department" required="">
+                                        <label>Department Name</label>
                                     </div>
 
                                     <div class="pads">

@@ -19,12 +19,17 @@
 
 // Get the user's Information
 $interest =  test_input($_POST['searchInterest']) ;
+$filter = test_input($_POST['filter']);
 
 
 
 
-
-$sql = "SELECT * FROM InterestBase where Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";
+if ($filter == "None"){
+	$sql = "SELECT * FROM InterestBase where Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";
+}
+else{
+	$sql = "SELECT * FROM InterestBase where Type = '$filter' AND (Keyword LIKE '%$interest%' or Description LIKE '%$interest%')";
+}
 $res = mysqli_query($mysqli, $sql);
 
 if ($res->num_rows > 0) {

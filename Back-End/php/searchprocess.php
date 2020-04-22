@@ -23,6 +23,36 @@ $filter = test_input($_POST['filter']);
 
 
 
+$sqlName = "SELECT * FROM UserBase where Name LIKE '%$interest%'";
+$res = mysqli_query($mysqli, $sqlName);
+while($row = $res->fetch_assoc()) {
+		$id = $row["UserID"];
+		$name = $row["Name"];
+		$email = $row["email"];
+		$type = $row["isStudent"];
+		
+		if ($filter == "None"){
+			$selectName = "SELECT * FROM InterestBase where UserID = '$id'";
+		}
+		else{
+			$selectName = "SELECT * FROM InterestBase where Type = '$filter' AND UserID = '$id'";
+		}
+		
+		$InterestInfo = mysqli_query($mysqli, $selectName);
+		while ($interestRow = $InterestInfo->fetch_assoc()){
+			echo "Name: " . $name. " - Keyword: " . $interestRow["Keyword"]. " -Description: " . $interestRow["Description"]. " - Type: ". $interestRow["Type"] . " -Email: ". $email;
+			if ($type == 1){
+				echo " - Student <br>";
+			}
+			else{
+				echo " - Faculty <br>";
+			}
+		}
+		
+		
+		
+}    
+
 
 if ($filter == "None"){
 	$sql = "SELECT * FROM InterestBase where Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";

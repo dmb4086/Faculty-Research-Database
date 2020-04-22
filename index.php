@@ -7,9 +7,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Example Title</title>
+    <title>Database Web Application</title>
     <meta name="author" content="Dev Bhatt & Steve Morrissey">
-    <meta name="description" content="Faculty Research Database">
+    <meta name="description" content="Faculty Research Database, a web app that allows you to search people based on similar interests.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Front-End/css/style.css">
     <!--	<link rel="icon" type="image/x-icon" href=""/>-->
@@ -34,14 +34,7 @@
                             <a href="#t3">
                                 <li class="icon fa fa-database fa-3x" id="tres"></li>
                             </a>
-                            <!--
-                            <a href="#t4">
-                                <li class="icon fa fa-dribbble" id="cuatro"></li>
-                            </a>
-                            <a href="#t5">
-                                <li class="icon fa fa-plus-circle" id="cinco"></li>
-                            </a>
--->
+
                         </ul>
                         <div class="page" id="p1">
                             <div class="title cntr">Welcome to Faculty Research Database </div>
@@ -72,8 +65,6 @@
 
                         </div>
                         <div class="page" id="p2">
-
-                            <!--                            <section class="title cntr">ADD A RECORD</section>-->
 
                             <div class="login-box">
                                 <h2>ADD A RECORD</h2>

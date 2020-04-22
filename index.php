@@ -1,6 +1,6 @@
 <?php
 	$path = './';
-	require $path.'../../../../dbConnect.inc';
+	require $path.'../../dbConnect.inc';
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -150,7 +150,7 @@
                         </div>
                         <div class="page" id="p3">
                             <section class="icon fa fa-rocket"><span class="title">Rocket</span></section>
-							<table algin="center" border="1px" style="width:300px; line-height:30px;">
+							<table align="center" >
 								<tr>
 									<th><h2>User Interests</h2></th>
 								</tr>
@@ -162,8 +162,8 @@
 									<th>Email</th>
 								</t>
 								<?php
-									$sql = "SELECT Name, Keyword, Description, Type, Email From UserBase Join InterestBase On UserBase.UserID = InterestBase.UserID"
-									$res = mysqli_query($mysqli, $sqlName);
+									$sql = "SELECT Name, Keyword, Description, Type, Email From UserBase RIGHT JOIN InterestBase On UserBase.UserID = InterestBase.UserID";
+									$res = mysqli_query($mysqli, $sql);
 									while($row = $res->fetch_assoc()) {
 								?>
 									<tr>

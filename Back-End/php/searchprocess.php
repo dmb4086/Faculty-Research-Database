@@ -2,10 +2,20 @@
 	$path = './';
 	require $path.'../../../../dbConnect.inc';
 ?>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <meta name="author" content="Dev Bhatt & Steve Morrissey">
+    <meta name="description" content="Faculty Research Database">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../Front-End/css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+</head>
+
 <h2>Search Results</h2>
-
-
-
 <?php
 //-----------------------------------------------------------
 
@@ -20,75 +30,61 @@
 // Get the user's Information
 $interest =  test_input($_POST['searchInterest']) ;
 $filter = test_input($_POST['filter']);
+?>
+
+<table class="table-fill">
+			<thead>
+				<t>
+					<th class="text-left">Name</th>
+					<th class="text-left">Keyword</th>
+					<th class="text-left">Description</th>
+					<th class="text-left">Type</th>
+					<th class="text-left">Email</th>
+				</t>
+			</thead>
+
+			<tbody class="table-hover">    
 
 
 
-$sqlName = "SELECT * FROM UserBase where Name LIKE '%$interest%'";
-$res = mysqli_query($mysqli, $sqlName);
-while($row = $res->fetch_assoc()) {
-		$id = $row["UserID"];
-		$name = $row["Name"];
-		$email = $row["email"];
-		$type = $row["isStudent"];
-		
-		if ($filter == "None"){
-			$selectName = "SELECT * FROM InterestBase where UserID = '$id'";
-		}
-		else{
-			$selectName = "SELECT * FROM InterestBase where Type = '$filter' AND UserID = '$id'";
-		}
-		
-		$InterestInfo = mysqli_query($mysqli, $selectName);
-		while ($interestRow = $InterestInfo->fetch_assoc()){
-			echo "Name: " . $name. " - Keyword: " . $interestRow["Keyword"]. " -Description: " . $interestRow["Description"]. " - Type: ". $interestRow["Type"] . " -Email: ". $email;
-			if ($type == 1){
-				echo " - Student <br>";
-			}
-			else{
-				echo " - Faculty <br>";
-			}
-		}
-		
-		
-		
-}    
+
+<?php
 
 
 if ($filter == "None"){
-	$sql = "SELECT * FROM InterestBase where Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";
+	$sql = "SELECT Name, Keyword, Description, Type, Email FROM InterestBase Join UserBase on InterestBase.UserID = UserBase.UserID where Name LIKE '%$interest%' OR Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";
 }
 else{
-	$sql = "SELECT * FROM InterestBase where Type = '$filter' AND (Keyword LIKE '%$interest%' or Description LIKE '%$interest%')";
+	$sql = "SELECT Name, Keyword, Description, Type, Email FROM InterestBase Join UserBase on InterestBase.UserID = UserBase.UserID where Type = '$filter' AND (Name LIKE '%$interest%$ OR Keyword LIKE '%$interest%' or Description LIKE '%$interest%')";
 }
 $res = mysqli_query($mysqli, $sql);
+
+
 
 if ($res->num_rows > 0) {
     // output data of each row
     while($row = $res->fetch_assoc()) {
-		$id = $row["UserID"];
-		$selectName = "SELECT * FROM UserBase where UserID='$id'";
-		$personInfo = mysqli_query($mysqli, $selectName);
-		$personArray = $personInfo->fetch_assoc();
+		?>
 		
-		$name = $personArray["Name"];
-		$email = $personArray["email"];
-		$type = $personArray["isStudent"];
-		
-        echo "Name: " . $name. " - Keyword: " . $row["Keyword"]. " -Description: " . $row["Description"]. " - Type: ". $row["Type"] . " -Email: ". $email;
-		if ($type == 1){
-			echo " - Student <br>";
-		}
-		else {
-			echo " - Faculty <br>";
-		}
-    }
-} else {
-    echo "0 results";
+				<tr>
+					<td><?php echo $row['Name']; ?></td>
+					<td><?php echo $row['Keyword']; ?></td>
+					<td><?php echo $row['Description']; ?></td>
+					<td><?php echo $row['Type']; ?></td>
+					<td><?php echo $row['Email']; ?></td>
+				</tr>
+	<?php
+	}
 }
+	?>
+	
+			</tbody>
+        </table>
+		
 
-?>
+
+
 
 <?php
-
 	mysqli_close($mysqli);
 ?>

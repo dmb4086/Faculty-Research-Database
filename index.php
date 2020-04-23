@@ -7,7 +7,7 @@ require $path . '../../dbConnect.inc';
 
 <head>
     <meta charset="utf-8">
-    <title>Example Title</title>
+    <title>Database Web App</title>
     <meta name="author" content="Dev Bhatt & Steve Morrissey">
     <meta name="description" content="Faculty Research Database">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

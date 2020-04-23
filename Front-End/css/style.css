@@ -8,7 +8,8 @@ html, body, .page {
   -moz-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
   -o-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
   color: #fff;
-  overflow: hidden;
+  overflow: scroll;
+    padding-bottom: 20em;
 }
 
 * {
@@ -457,18 +458,23 @@ div.table-title {
 
 /*** Table Styles **/
 
+
 .table-fill {
   background: white;
   border-radius:3px;
   border-collapse: collapse;
-  height: 320px;
+  height: 100%;
   margin: auto;
-  max-width: 600px;
+  max-width: 1000px;
   padding:5px;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
+
 }
+
+
+
 
 th {
   color:#D5DDE5;;
@@ -481,6 +487,7 @@ th {
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
+    width: 100%
 }
 
 th:first-child {
@@ -569,6 +576,8 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
+
+
 
 
 

@@ -1,15 +1,15 @@
 <?php
-	$path = './';
-	require $path.'../../dbConnect.inc';
+$path = './';
+require $path . '../../dbConnect.inc';
 ?>
 <!DOCTYPE html>
 <html lang="">
 
 <head>
     <meta charset="utf-8">
-    <title>Database Web Application</title>
+    <title>Example Title</title>
     <meta name="author" content="Dev Bhatt & Steve Morrissey">
-    <meta name="description" content="Faculty Research Database, a web app that allows you to search people based on similar interests.">
+    <meta name="description" content="Faculty Research Database">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Front-End/css/style.css">
     <!--	<link rel="icon" type="image/x-icon" href=""/>-->
@@ -34,7 +34,14 @@
                             <a href="#t3">
                                 <li class="icon fa fa-database fa-3x" id="tres"></li>
                             </a>
-
+                            <!--
+                            <a href="#t4">
+                                <li class="icon fa fa-dribbble" id="cuatro"></li>
+                            </a>
+                            <a href="#t5">
+                                <li class="icon fa fa-plus-circle" id="cinco"></li>
+                            </a>
+-->
                         </ul>
                         <div class="page" id="p1">
                             <div class="title cntr">Welcome to Faculty Research Database </div>
@@ -42,16 +49,16 @@
                             <div>
                                 <form class="search-container" name="OrderFrom" action="Back-End/php/searchprocess.php" onsubmit="return validateForm();" method="post">
                                     <input type="text" name="searchInterest" id="search-bar" placeholder="Search for interests">
-									<div class="pads">
+                                    <div class="pads">
                                         <label for="isStudent">Filter by type:</label>
 
                                         <select id="isstudent" name="filter">
-										
-											<option value="None"> None</option>
+
+                                            <option value="None"> None</option>
                                             <option value="Research"> Research</option>
                                             <option value="Paper"> Paper</option>
-											<option value="Project"> Project</option>
-											<option value="Other"> Other</option>
+                                            <option value="Project"> Project</option>
+                                            <option value="Other"> Other</option>
 
                                         </select>
                                     </div>
@@ -66,6 +73,8 @@
                         </div>
                         <div class="page" id="p2">
 
+                            <!--                            <section class="title cntr">ADD A RECORD</section>-->
+
                             <div class="login-box">
                                 <h2>ADD A RECORD</h2>
                                 <form action="Back-End/php/addrecords.php" method="get">
@@ -77,7 +86,7 @@
                                         <input type="email" name="email" required="">
                                         <label>Email</label>
                                     </div>
-									<div class="user-box">
+                                    <div class="user-box">
                                         <input type="text" name="department" required="">
                                         <label>Department Name</label>
                                     </div>
@@ -140,41 +149,45 @@
 
                         </div>
                         <div class="page" id="p3">
-                            <section class="icon fa fa-rocket"><span class="title">Rocket</span></section>
-							<table align="center" >
-								<tr>
-									<th><h2>User Interests</h2></th>
-								</tr>
-								<t>
-									<th>Name</th>
-									<th>Keyword</th>
-									<th>Description</th>
-									<th>Type</th>
-									<th>Email</th>
-								</t>
-								<?php
-									$sql = "SELECT Name, Keyword, Description, Type, Email From UserBase RIGHT JOIN InterestBase On UserBase.UserID = InterestBase.UserID";
-									$res = mysqli_query($mysqli, $sql);
-									while($row = $res->fetch_assoc()) {
-								?>
-									<tr>
-										<td><?php echo $row['Name']; ?></td>
-										<td><?php echo $row['Keyword']; ?></td>
-										<td><?php echo $row['Description']; ?></td>
-										<td><?php echo $row['Type']; ?></td>
-										<td><?php echo $row['Email']; ?></td>
-									</tr>
-									<?php 
-										}
-										?>
-								
-								
-								
-							</table>	
-							
-							
-							
+                            <!-- <div class="table-title"> -->
+                            <div class="title cntr">Database </div>
+                            <!-- </div> -->
+                            <table class="table-fill">
+                                <thead>
+                                    <t>
+                                        <th class="text-left">Name</th>
+                                        <th class="text-left">Keyword</th>
+                                        <th class="text-left">Description</th>
+                                        <th class="text-left">Type</th>
+                                        <th class="text-left">Email</th>
+                                    </t>
+                                </thead>
+
+                                <tbody class="table-hover">
+                                    <?php
+                                    $sql = "SELECT Name, Keyword, Description, Type, Email From UserBase RIGHT JOIN InterestBase On UserBase.UserID = InterestBase.UserID";
+                                    $res = mysqli_query($mysqli, $sql);
+                                    while ($row = $res->fetch_assoc()) {
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row['Name']; ?></td>
+                                            <td><?php echo $row['Keyword']; ?></td>
+                                            <td><?php echo $row['Description']; ?></td>
+                                            <td><?php echo $row['Type']; ?></td>
+                                            <td><?php echo $row['Email']; ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+
+
+                                </tbody>
+                            </table>
+
+
+
                         </div>
+<!--
                         <div class="page" id="p4">
                             <section class="icon fa fa-dribbble">
                                 <span class="title">Dribbble</span>
@@ -184,6 +197,8 @@
                                 <p class="hint">Already invited by <a href="http://www.dribbble.com/mrpeters" target="_blank">Stan Peters</a></p>
                             </section>
                         </div>
+-->
+<!--
                         <div class="page" id="p5">
                             <section class="icon fa fa-plus-circle">
                                 <span class="title">More</span>
@@ -193,6 +208,7 @@
                                 </p>
                             </section>
                         </div>
+-->
                     </div>
                 </div>
             </div>
@@ -201,4 +217,6 @@
 
     <footer></footer>
     <script type="text/javascript" src="Front-End/js/script.js"></script>
-</body></html>
+</body>
+
+</html>

@@ -9,6 +9,8 @@ html, body, .page {
   -o-transition: all .6s cubic-bezier(.5, .2, .2, 1.1);
   color: #fff;
   overflow: scroll;
+        overflow-x: hidden;
+
     padding-bottom: 20em;
 }
 

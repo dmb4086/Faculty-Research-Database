@@ -55,7 +55,7 @@ if ($filter == "None"){
 	$sql = "SELECT Name, Keyword, Description, Type, Email FROM InterestBase Join UserBase on InterestBase.UserID = UserBase.UserID where Name LIKE '%$interest%' OR Keyword LIKE '%$interest%' or Description LIKE '%$interest%'";
 }
 else{
-	$sql = "SELECT Name, Keyword, Description, Type, Email FROM InterestBase Join UserBase on InterestBase.UserID = UserBase.UserID where Type = '$filter' AND (Name LIKE '%$interest%$ OR Keyword LIKE '%$interest%' or Description LIKE '%$interest%')";
+	$sql = "SELECT Name, Keyword, Description, Type, Email FROM InterestBase Join UserBase on InterestBase.UserID = UserBase.UserID where Type = '$filter' AND (Name LIKE '%$interest%' OR Keyword LIKE '%$interest%' or Description LIKE '%$interest%')";
 }
 $res = mysqli_query($mysqli, $sql);
 

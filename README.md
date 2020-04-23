@@ -6,6 +6,8 @@ and interests to find collaborators. This is my effort to solve that problem on 
 scale by writing a database application that will allow users to view and search other users by certain filters/keywords
 
 
+![](project.gif)
+
 # The link to this project is at 
 http://serenity.ist.rit.edu/~dmb4086/Database%20Project/Faculty-Research-Database/
 

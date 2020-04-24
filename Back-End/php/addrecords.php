@@ -25,83 +25,78 @@ if ($mysqli) {
         }
 
 
-		$sql = "SELECT * FROM DepartmentBase where Department = '$department'";
-		$res = mysqli_query($mysqli, $sql);
-		
-		if($res->num_rows == 0)
-		{
-			$stmt = $mysqli->prepare("INSERT INTO DepartmentBase (Department) VALUES (?)");
-			$stmt->bind_param("s", $department);
+        $sql = "SELECT * FROM DepartmentBase where Department = '$department'";
+        $res = mysqli_query($mysqli, $sql);
 
-			$stmt->execute();
-			$stmt->close();
-			
-		}
+        if ($res->num_rows == 0) {
+            $stmt = $mysqli->prepare("INSERT INTO DepartmentBase (Department) VALUES (?)");
+            $stmt->bind_param("s", $department);
+
+            $stmt->execute();
+            $stmt->close();
+        }
 
 
-		$sql = "SELECT * FROM UserBase where email = '$email'";
-		$res = mysqli_query($mysqli, $sql);
-		
-		if($res->num_rows == 0)
-		{
-			$stmt = $mysqli->prepare("INSERT INTO UserBase (name, email, isStudent) VALUES (?,?,?)");
-			$stmt->bind_param("ssi", $name, $email, $StudentFlag);
+        $sql = "SELECT * FROM UserBase where email = '$email'";
+        $res = mysqli_query($mysqli, $sql);
 
-			$stmt->execute();
-			$stmt->close();
-			
-			if ($StudentFlag == 1){
-				
-				$sql = "SELECT * FROM UserBase where email='$email'";
-				$res = mysqli_query($mysqli, $sql);
-				while ($row = $res->fetch_assoc()) {
-					$id = $row["UserID"];
-					$name = $row['Name'];
-					$StudentFlag = $row['isStudent'];
-				}
-				
-				$sql = "SELECT * FROM DepartmentBase where Department='$department'";
-				$res = mysqli_query($mysqli, $sql);
-				while ($row = $res->fetch_assoc()) {
-					$DepartmentID = $row["DepartmentID"];
-				}
-				
-				
-				$stmt = $mysqli->prepare("INSERT INTO StudentBase (UserID, DepartmentID) VALUES (?,?)");
-				$stmt->bind_param("ii", $id, $DepartmentID);
+        if ($res->num_rows == 0) {
+            $stmt = $mysqli->prepare("INSERT INTO UserBase (name, email, isStudent) VALUES (?,?,?)");
+            $stmt->bind_param("ssi", $name, $email, $StudentFlag);
 
-				$stmt->execute();
-				$stmt->close();
-			}
-			else {
-				$sql = "SELECT * FROM UserBase where email='$email'";
-				$res = mysqli_query($mysqli, $sql);
-				while ($row = $res->fetch_assoc()) {
-					$id = $row["UserID"];
-					$name = $row['Name'];
-					$StudentFlag = $row['isStudent'];
-				}
-				
-				$sql = "SELECT * FROM DepartmentBase where Department='$department'";
-				$res = mysqli_query($mysqli, $sql);
-				while ($row = $res->fetch_assoc()) {
-					$DepartmentID = $row["DepartmentID"];
-				}
-				
-				
-				$stmt = $mysqli->prepare("INSERT INTO FacultyBase (UserID, DepartmentID) VALUES (?,?)");
-				$stmt->bind_param("ii", $id, $DepartmentID);
+            $stmt->execute();
+            $stmt->close();
 
-				$stmt->execute();
-				$stmt->close();
-			}
-			
-		}
-		
+            if ($StudentFlag == 1) {
+
+                $sql = "SELECT * FROM UserBase where email='$email'";
+                $res = mysqli_query($mysqli, $sql);
+                while ($row = $res->fetch_assoc()) {
+                    $id = $row["UserID"];
+                    $name = $row['Name'];
+                    $StudentFlag = $row['isStudent'];
+                }
+
+                $sql = "SELECT * FROM DepartmentBase where Department='$department'";
+                $res = mysqli_query($mysqli, $sql);
+                while ($row = $res->fetch_assoc()) {
+                    $DepartmentID = $row["DepartmentID"];
+                }
+
+
+                $stmt = $mysqli->prepare("INSERT INTO StudentBase (UserID, DepartmentID) VALUES (?,?)");
+                $stmt->bind_param("ii", $id, $DepartmentID);
+
+                $stmt->execute();
+                $stmt->close();
+            } else {
+                $sql = "SELECT * FROM UserBase where email='$email'";
+                $res = mysqli_query($mysqli, $sql);
+                while ($row = $res->fetch_assoc()) {
+                    $id = $row["UserID"];
+                    $name = $row['Name'];
+                    $StudentFlag = $row['isStudent'];
+                }
+
+                $sql = "SELECT * FROM DepartmentBase where Department='$department'";
+                $res = mysqli_query($mysqli, $sql);
+                while ($row = $res->fetch_assoc()) {
+                    $DepartmentID = $row["DepartmentID"];
+                }
+
+
+                $stmt = $mysqli->prepare("INSERT INTO FacultyBase (UserID, DepartmentID) VALUES (?,?)");
+                $stmt->bind_param("ii", $id, $DepartmentID);
+
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
         // echo "name: ".$name." Email: ".$email." keyword: ".$keyword. "type: ".$type. "SF". $StudentFlag;
-		
-			
-        
+
+
+
     }
     // UserBase has been populated with the selected record. 
 
@@ -158,3 +153,6 @@ if ($mysqli) {
     $stmt->execute();
     $stmt->close();
 }
+
+header("Location: http://serenity.ist.rit.edu/~dmb4086/Database%20Project/Faculty-Research-Database/");
+exit;
